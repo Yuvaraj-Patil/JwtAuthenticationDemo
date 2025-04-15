@@ -32,4 +32,6 @@ A simple ASP.NET Core Web API project demonstrating JWT Authentication and Refre
    git clone https://github.com/Yuvaraj-Patil/JwtAuthenticationDemo.git
    cd JwtAuthenticationDemo
    dotnet build
-   dotnet run'''
+   dotnet run
+   https://localhost:{port}/swagger   
+   ```
