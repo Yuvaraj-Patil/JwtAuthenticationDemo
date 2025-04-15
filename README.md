@@ -1,4 +1,4 @@
-# JwtAuthenticationDemo
+# JwtAuthentication with Refresh Token Implementation
 
 A simple ASP.NET Core Web API project demonstrating JWT Authentication and Refresh Token implementation.
 
@@ -29,8 +29,8 @@ A simple ASP.NET Core Web API project demonstrating JWT Authentication and Refre
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Yuvaraj-Patil/JwtAuthenticationDemo.git
-   cd JwtAuthenticationDemo
+   git clone https://github.com/Yuvaraj-Patil/JwtAuthentication.git
+   cd JwtAuthentication
    dotnet build
    dotnet run
    https://localhost:{port}/swagger   
