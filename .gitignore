@@ -491,3 +491,8 @@ $RECYCLE.BIN/
 /playwright/.auth/
 /user.json
 .azure
+
+#Dlls or exe file
+*.dll
+*.pdb
+*.exe
