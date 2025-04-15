@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace JwtAuthenticationDemo.Controllers
 {
@@ -21,7 +22,7 @@ namespace JwtAuthenticationDemo.Controllers
             _context = context;
             _config = config;
         }
-
+        
         [HttpPost("login")]
         public async Task<IActionResult> Authenticate([FromBody] UserCreds creds)
         {
