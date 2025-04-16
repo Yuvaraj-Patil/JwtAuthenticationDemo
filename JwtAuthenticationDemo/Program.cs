@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
 using JwtAuthenticationDemo.ExtensionClasses;
+using JwtAuthenticationDemo.CustomMiddleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +21,7 @@ builder.Services.AddSwaggerGen(options =>
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
+        Type = SecuritySchemeType.Http,
         Scheme = "Bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
@@ -57,6 +58,8 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
+app.UseMiddleware<LoggingMiddleware>();
+
 // Enable Swagger in development
 if (app.Environment.IsDevelopment())
 {
@@ -66,10 +69,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthentication(); // 👈 Important if using JWT
+app.UseAuthentication(); //Important if using JWT
 app.UseAuthorization();
 
-app.MapControllers(); // 👈 This enables routing to your controller endpoints
+app.MapControllers(); //This enables routing to your controller endpoints
 
 app.Run();
 
