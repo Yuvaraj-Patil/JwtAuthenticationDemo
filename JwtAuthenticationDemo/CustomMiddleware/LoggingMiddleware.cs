@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Net;
 using Microsoft.Extensions.Configuration;
 
 namespace JwtAuthenticationDemo.CustomMiddleware;
@@ -28,7 +29,7 @@ public class LoggingMiddleware
             await _next(context);
             stopwatch.Stop();
 
-            logEntry = $"[Log Entry Time: {DateTime.Now}] | Elapsed Time: {stopwatch.ElapsedMilliseconds}ms | StatusCode: {context.Response.StatusCode} |";
+            logEntry = $"[Log Entry Time: {DateTime.Now}] | Elapsed Time: {stopwatch.ElapsedMilliseconds}ms | StatusCode: {context.Response.StatusCode} | StatusMassage: {Enum.GetName(typeof(HttpStatusCode), context.Response.StatusCode)}";
         }
         catch (Exception ex)
         {
