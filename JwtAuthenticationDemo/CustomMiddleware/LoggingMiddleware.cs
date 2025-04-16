@@ -15,7 +15,7 @@ public class LoggingMiddleware
         _next = next;
         _configuration = configuration;
 
-        _logFilePath = _configuration["LoggingMiddleware:LogFilePath"] ?? "Logs/log.txt";
+        _logFilePath = _configuration["LoggingMiddleware:LogFilePath"] ?? "C:\\Logs\\log.txt";
         EnsureLogDirectoryExists(_logFilePath);
     }
 
@@ -29,7 +29,7 @@ public class LoggingMiddleware
             await _next(context);
             stopwatch.Stop();
 
-            logEntry = $"[Log Entry Time: {DateTime.Now}] | Elapsed Time: {stopwatch.ElapsedMilliseconds}ms | StatusCode: {context.Response.StatusCode} | StatusMassage: {Enum.GetName(typeof(HttpStatusCode), context.Response.StatusCode)}";
+            logEntry = $"[Log Entry Time: {DateTime.Now}] | Elapsed Time: {stopwatch.ElapsedMilliseconds}ms | StatusCode: {context.Response.StatusCode} | StatusMessage: {Enum.GetName(typeof(HttpStatusCode), context.Response.StatusCode)}";
         }
         catch (Exception ex)
         {
